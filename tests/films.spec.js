@@ -293,8 +293,17 @@ describe('Function "orderByYear"', () => {
 // Exercise 6
 // YOUR CODE HERE. Test moviesAverageByCategory()
 describe('Function "moviesAverageByCategory"', () => {
-  it('ADD YOUR CODE IN films.spec.js file', () => {
-    expect(typeof hoursToMinutes).toBe('coffee');
+  it('should be declared', () => {
+    expect(typeof moviesAverageByCategory).toBe('function');
+  });
+  it('should return a number', () => {
+    expect(typeof moviesAverageByCategory(movies, "Steven Spielberg")).toBe("number");
+  });
+  it ('should return the correct average for "Drama"', () => {
+    expect(moviesAverageByCategory(movies, "Drama")).toBeCloseTo(8.32, 2);
+  });
+  it('should return 0 if no movies match the genre', () => {
+    expect(moviesAverageByCategory(movies, "noGender")).toBe(0);
   });
 });
 
