@@ -71,9 +71,14 @@ console.log("EXERCISE 7 ->",result );
 return result;
   });
 }
-// Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
-  
+
+function bestFilmOfYear(array, year) {
+  let filterByYear = array.filter(film => film.year === year);
+  if(!filterByYear  || filterByYear.length === 0) return 0;
+  let filmScore = filterByYear.reduce((actual, next) => actual.score > next.score ? actual : next);
+
+  console.log ("EXERCISE 8 ->", filmScore);
+  return [filmScore];  
 }
 
 
