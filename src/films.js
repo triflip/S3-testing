@@ -39,7 +39,7 @@ function orderByYear(array) {
   return films;
 }
 
-// Exercise 6: Calculate the average of the movies in a category
+
 function moviesAverageByCategory(array,genre) {
   if (!genre || !Array.isArray(array)) return 0;
   let filteredFilms= array.filter(film => film.genre.includes(genre));  
@@ -51,11 +51,26 @@ function moviesAverageByCategory(array,genre) {
   return result;
 }
 
-// Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
+function hoursToMinutes(array) {
+  return array.map(film => {
+    if (!film.duration || typeof film.duration !== "string") {
+       return {...film, duration : 0}; 
+    }
+  const parts = film.duration.split(" ");
+  let hour = 0;
+  let minute = 0;
+  
+  parts.forEach(part => {
+    if(part.includes("h")) hour = parseInt(part);
+    if(part.includes("min")) minute = parseInt(part);
+  });
+const totalMinutes = (hour * 60) + minute;
+let result = {...film, duration : totalMinutes};
 
+console.log("EXERCISE 7 ->",result );
+return result;
+  });
 }
-
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear() {
   
